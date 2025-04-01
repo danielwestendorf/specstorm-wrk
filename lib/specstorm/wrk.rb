@@ -5,6 +5,9 @@ require_relative "wrk/version"
 module Specstorm
   module Wrk
     class Error < StandardError; end
-    # Your code goes here...
+
+    def self.run(duration:)
+      sleep(duration)
+    end
   end
 end

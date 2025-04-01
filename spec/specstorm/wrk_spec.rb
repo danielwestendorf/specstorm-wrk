@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe Specstorm::Wrk do
-  it "has a version number" do
-    expect(Specstorm::Wrk::VERSION).not_to be nil
-  end
+  describe ".run" do
+    it "sleeps for time" do
+      expect(described_class).to receive(:sleep)
+        .with(100)
+        .and_return(true)
 
-  it "does something useful" do
-    expect(false).to eq(true)
+      described_class.run(duration: 100)
+    end
   end
 end
