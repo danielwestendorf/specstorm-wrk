@@ -4,8 +4,6 @@ require_relative "wrk/version"
 
 module Specstorm
   module Wrk
-    STDOUT
-
     class Error < StandardError; end
 
     def self.run(duration:)
