@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "webmock/rspec"
 require "specstorm/wrk"
 
 RSpec.configure do |config|
