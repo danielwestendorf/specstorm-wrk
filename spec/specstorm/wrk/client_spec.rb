@@ -3,7 +3,11 @@
 RSpec.describe Specstorm::Wrk::Client do
   let(:base_url) { "http://localhost:13345" }
 
-  around { |ex| ENV["SPECSTORM_SRV_URI"] = base_url; ex.run; ENV["SPECSTORM_SRV_URI"] = nil }
+  around { |ex|
+    ENV["SPECSTORM_SRV_URI"] = base_url
+    ex.run
+    ENV["SPECSTORM_SRV_URI"] = nil
+  }
 
   describe ".connect?" do
     subject { described_class.connect? }
@@ -13,7 +17,11 @@ RSpec.describe Specstorm::Wrk::Client do
     end
 
     context "if the server is unreachable" do
-      around { |ex| WebMock.disable!; ex.run; WebMock.enable! }
+      around { |ex|
+        WebMock.disable!
+        ex.run
+        WebMock.enable!
+      }
 
       it { is_expected.to eq(false) }
     end
@@ -47,9 +55,9 @@ RSpec.describe Specstorm::Wrk::Client do
 
     context "200 response" do
       let(:status) { 200 }
-      let(:body) { { id: "abc", description: "some test" }.to_json }
+      let(:body) { {id: "abc", description: "some test"}.to_json }
 
-      it { is_expected.to eq(id: "abc", description: "some test")}
+      it { is_expected.to eq(id: "abc", description: "some test") }
     end
 
     context "410 response" do
